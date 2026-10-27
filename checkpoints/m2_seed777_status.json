@@ -1,0 +1,124 @@
+{
+ "active": true,
+ "phase": "running red science",
+ "waiting": "progress: steady",
+ "last_rule": "collect",
+ "game_minutes": 36.964166666666664,
+ "drills": {
+  "iron-ore": 6,
+  "coal": 4,
+  "copper-ore": 3,
+  "stone": 1
+ },
+ "furnaces": 10,
+ "chests": 5,
+ "power": true,
+ "block_parts": 11,
+ "block_done": true,
+ "red_science_from_assembler": 24,
+ "researched": {
+  "electronics": true,
+  "steam-power": true,
+  "automation-science-pack": true,
+  "automation": true
+ },
+ "researched_after_block": [
+  "gun-turret",
+  "lamp"
+ ],
+ "current_research": "military",
+ "stats": {
+  "actions": 755,
+  "placed": 45,
+  "mined": 207,
+  "crafted": 88,
+  "walked": 13403.479534076887,
+  "errors": 0
+ },
+ "phases": [
+  {
+   "phase": "burner mining 1/12",
+   "tick": 42
+  },
+  {
+   "phase": "burner mining 2/12",
+   "tick": 6356
+  },
+  {
+   "phase": "burner mining 3/12",
+   "tick": 12775
+  },
+  {
+   "phase": "burner mining 4/12",
+   "tick": 16086
+  },
+  {
+   "phase": "burner mining 5/12",
+   "tick": 20881
+  },
+  {
+   "phase": "burner mining 6/12",
+   "tick": 22659
+  },
+  {
+   "phase": "burner mining 7/12",
+   "tick": 23772
+  },
+  {
+   "phase": "burner mining 8/12",
+   "tick": 38948
+  },
+  {
+   "phase": "burner mining 9/12",
+   "tick": 46060
+  },
+  {
+   "phase": "burner mining 10/12",
+   "tick": 46515
+  },
+  {
+   "phase": "burner mining 11/12",
+   "tick": 73339
+  },
+  {
+   "phase": "burner mining 12/12",
+   "tick": 80318
+  },
+  {
+   "phase": "steam power",
+   "tick": 88529
+  },
+  {
+   "phase": "lab",
+   "tick": 93275
+  },
+  {
+   "phase": "science site",
+   "tick": 95522
+  },
+  {
+   "phase": "power line",
+   "tick": 95536
+  },
+  {
+   "phase": "lab",
+   "tick": 96124
+  },
+  {
+   "phase": "automation research",
+   "tick": 96145
+  },
+  {
+   "phase": "science block",
+   "tick": 106708
+  },
+  {
+   "phase": "running red science",
+   "tick": 116942
+  }
+ ],
+ "shortcuts": [
+  "teleport (waits walking time)",
+  "batch mining (waits mining time)"
+ ]
+}

@@ -1,0 +1,123 @@
+{
+ "active": true,
+ "phase": "running red science",
+ "waiting": "progress: steady",
+ "last_rule": "fuel",
+ "game_minutes": 37.0075,
+ "drills": {
+  "iron-ore": 6,
+  "coal": 4,
+  "copper-ore": 3,
+  "stone": 1
+ },
+ "furnaces": 10,
+ "chests": 5,
+ "power": true,
+ "block_parts": 11,
+ "block_done": true,
+ "red_science_from_assembler": 16,
+ "researched": {
+  "electronics": true,
+  "steam-power": true,
+  "automation-science-pack": true,
+  "automation": true
+ },
+ "researched_after_block": [
+  "gun-turret"
+ ],
+ "current_research": "lamp",
+ "stats": {
+  "actions": 580,
+  "placed": 45,
+  "mined": 259,
+  "crafted": 85,
+  "walked": 14164.145949230648,
+  "errors": 0
+ },
+ "phases": [
+  {
+   "phase": "burner mining 1/12",
+   "tick": 35
+  },
+  {
+   "phase": "burner mining 2/12",
+   "tick": 15365
+  },
+  {
+   "phase": "burner mining 3/12",
+   "tick": 22603
+  },
+  {
+   "phase": "burner mining 4/12",
+   "tick": 26964
+  },
+  {
+   "phase": "burner mining 5/12",
+   "tick": 30058
+  },
+  {
+   "phase": "burner mining 6/12",
+   "tick": 32382
+  },
+  {
+   "phase": "burner mining 7/12",
+   "tick": 37611
+  },
+  {
+   "phase": "burner mining 8/12",
+   "tick": 52325
+  },
+  {
+   "phase": "burner mining 9/12",
+   "tick": 55643
+  },
+  {
+   "phase": "burner mining 10/12",
+   "tick": 58744
+  },
+  {
+   "phase": "burner mining 11/12",
+   "tick": 83965
+  },
+  {
+   "phase": "burner mining 12/12",
+   "tick": 90538
+  },
+  {
+   "phase": "steam power",
+   "tick": 92323
+  },
+  {
+   "phase": "lab",
+   "tick": 96271
+  },
+  {
+   "phase": "science site",
+   "tick": 102774
+  },
+  {
+   "phase": "power line",
+   "tick": 102788
+  },
+  {
+   "phase": "lab",
+   "tick": 103418
+  },
+  {
+   "phase": "automation research",
+   "tick": 103453
+  },
+  {
+   "phase": "science block",
+   "tick": 113281
+  },
+  {
+   "phase": "running red science",
+   "tick": 125342
+  }
+ ],
+ "shortcuts": [
+  "teleport (waits walking time)",
+  "batch mining (waits mining time)"
+ ]
+}

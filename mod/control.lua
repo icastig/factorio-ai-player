@@ -11,6 +11,7 @@ require("scripts.queries")
 require("scripts.brain")
 require("scripts.skills")
 local AISites = require("scripts.sites")
+local AIPlay = require("scripts.play")
 
 -- -------------------------------------------------------------------------
 -- Remote interface — lets an external MCP/RCON client invoke a skill against
@@ -127,6 +128,29 @@ remote.add_interface("ai_player", {
     return AISites.blueprint_cost(params)
   end,
 
+  -- M2 play loop. play_start{fresh=true} spawns a new AI with an empty inventory.
+  play_start = function(params)
+    local p = params or {}
+    local c = AICharacter.get_character()
+    if p.fresh or not c then
+      AICharacter.spawn_ai_player()
+      c = AICharacter.get_character()
+    end
+    if not c then return { ok = false, detail = "could not spawn the AI character" } end
+    AIPlay.start(c, { fresh = (p.fresh ~= false) })
+    return { ok = true }
+  end,
+  play_stop = function()
+    AIPlay.stop()
+    return { ok = true }
+  end,
+  play_status = function()
+    return AIPlay.status()
+  end,
+  play_debug = function()
+    return AIPlay.debug()
+  end,
+
   -- Export all entities in a rectangle (x1,y1)-(x2,y2) on nauvis to a blueprint
   -- string. force defaults to the AI's force. Returns { ok, blueprint } or
   -- { ok=false, detail=... }. Empty area -> ok=false.
@@ -190,6 +214,7 @@ local function init_storage()
   -- disable it (set_autonomy) so it doesn't contend with skill calls. The
   -- `~= false` keeps an explicit false across re-init instead of resetting it.
   s.autonomy_enabled = (s.autonomy_enabled ~= false)
+  s.play             = s.play or {active = false}
 end
 
 -- Ensure exactly one AI character exists on ai_player_force.
@@ -801,5 +826,40 @@ commands.add_command("ai-memory",
       game.print("[AI Memory] === Active Directive ===", {r=1,g=0.8,b=0.5})
       game.print("  " .. mem.user_directive, {r=1,g=0.9,b=0.6})
     end
+  end
+)
+
+
+-- -------------------------------------------------------------------------
+-- M2 play loop: timer, research events, /ai-play command
+-- -------------------------------------------------------------------------
+
+script.on_nth_tick(AIPlay.NTH, function() AIPlay.tick() end)
+
+script.on_event(defines.events.on_research_finished, function(event)
+  AIPlay.on_research_finished(event)
+end)
+
+commands.add_command("ai-play",
+  "Start the AI play loop from an empty inventory. /ai-play [stop|status|continue]",
+  function(cmd)
+    if not storage.ai_player then game.print("[AI] Not initialised"); return end
+    local arg = (cmd.parameter or ""):lower()
+    if arg == "stop" then AIPlay.stop(); return end
+    if arg == "status" then
+      local st = AIPlay.status()
+      game.print(string.format("[AI] %s | %.1f game min | waiting: %s", tostring(st.phase), st.game_minutes or 0,
+        tostring(st.waiting or "-")))
+      return
+    end
+    local c = AICharacter.get_character()
+    if arg == "continue" and c then
+      storage.ai_player.play.active = true
+      game.print("[AI] play loop continues")
+      return
+    end
+    AICharacter.spawn_ai_player()
+    c = AICharacter.get_character()
+    if c then AIPlay.start(c, { fresh = true }) end
   end
 )

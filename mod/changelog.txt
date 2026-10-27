@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.6.0
+Date: 2026-10-27
+  Features:
+    - /ai-play: play loop from an empty inventory to assembler-made red science (M2).
+    - Site finder, blueprint placement with shift-click rules, blueprint cost (M1).
+  Changes:
+    - Ported to Factorio 2.1 (fluid and inventory API changes).
+    - Removed the blueprint import fallback that created ghosts without placement checks.
+---------------------------------------------------------------------------------------------------
 Version: 0.4.2
 Date: 2026-08-29
   Features:

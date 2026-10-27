@@ -1,0 +1,123 @@
+{
+ "active": true,
+ "phase": "running red science",
+ "waiting": "progress: steady",
+ "last_rule": "collect",
+ "game_minutes": 36.87444444444444,
+ "drills": {
+  "iron-ore": 6,
+  "coal": 4,
+  "copper-ore": 3,
+  "stone": 1
+ },
+ "furnaces": 10,
+ "chests": 5,
+ "power": true,
+ "block_parts": 11,
+ "block_done": true,
+ "red_science_from_assembler": 13,
+ "researched": {
+  "electronics": true,
+  "steam-power": true,
+  "automation-science-pack": true,
+  "automation": true
+ },
+ "researched_after_block": [
+  "gun-turret"
+ ],
+ "current_research": "lamp",
+ "stats": {
+  "actions": 574,
+  "placed": 45,
+  "mined": 261,
+  "crafted": 85,
+  "walked": 13827.863993213277,
+  "errors": 0
+ },
+ "phases": [
+  {
+   "phase": "burner mining 1/12",
+   "tick": 35
+  },
+  {
+   "phase": "burner mining 2/12",
+   "tick": 12957
+  },
+  {
+   "phase": "burner mining 3/12",
+   "tick": 19628
+  },
+  {
+   "phase": "burner mining 4/12",
+   "tick": 24941
+  },
+  {
+   "phase": "burner mining 5/12",
+   "tick": 29722
+  },
+  {
+   "phase": "burner mining 6/12",
+   "tick": 30807
+  },
+  {
+   "phase": "burner mining 7/12",
+   "tick": 33243
+  },
+  {
+   "phase": "burner mining 8/12",
+   "tick": 57008
+  },
+  {
+   "phase": "burner mining 9/12",
+   "tick": 62349
+  },
+  {
+   "phase": "burner mining 10/12",
+   "tick": 64015
+  },
+  {
+   "phase": "burner mining 11/12",
+   "tick": 86905
+  },
+  {
+   "phase": "burner mining 12/12",
+   "tick": 93030
+  },
+  {
+   "phase": "steam power",
+   "tick": 96530
+  },
+  {
+   "phase": "lab",
+   "tick": 101766
+  },
+  {
+   "phase": "science site",
+   "tick": 103880
+  },
+  {
+   "phase": "power line",
+   "tick": 103894
+  },
+  {
+   "phase": "lab",
+   "tick": 110201
+  },
+  {
+   "phase": "automation research",
+   "tick": 110299
+  },
+  {
+   "phase": "science block",
+   "tick": 117376
+  },
+  {
+   "phase": "running red science",
+   "tick": 124992
+  }
+ ],
+ "shortcuts": [
+  "teleport (waits walking time)",
+  "batch mining (waits mining time)"
+ ]
+}

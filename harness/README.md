@@ -21,3 +21,11 @@ warning; it must be sent twice. The smoke test does this.
   shift-click rules, clears trees, builds it; the harness adds research, the items and a power source,
   then measures science output against the plan and saves `checkpoints/m1_red_green.zip`.
 - `fai.py`  shared helpers (map creation, server context manager, Lua over RCON).
+- `scenario_m2.py [--seed N]`  M2: fresh map, `play_start{fresh=true}` once, then only watching. Passes when the
+  science block is complete, its assembler made red science and a technology finished after that, with no errors.
+  Writes `checkpoints/m2_seed<N>.zip` and `m2_seed<N>_status.json`.
+- `geometry.py`  dev tool: measures placement geometry (drill output, pump/boiler/engine, inserter sides) in the game.
+
+The play loop itself is `mod/scripts/play.lua`. In a game: `/ai-play` starts it with a new AI that has an empty
+inventory, `/ai-play status` prints the phase, `/ai-play stop` stops it. Progress goes to chat, to a map marker,
+and to `script-output/ai-player/play-status.json` and `play-log.txt`.

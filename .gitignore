@@ -28,3 +28,6 @@ dist/
 # Local dev dedicated-server write dir (saves, config, logs)
 server/
 __pycache__/
+checkpoints/m2_seed1.zip
+checkpoints/m2_seed777.zip
+checkpoints/m2_seed2026.zip

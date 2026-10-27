@@ -1,12 +1,12 @@
 {
   "name": "ai-player-v3",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "title": "AI Player v3 (skills)",
   "author": "demon117_",
   "factorio_version": "2.1",
   "dependencies": [
     "base >= 2.1"
   ],
-  "description": "Skill-based autonomous AI player for Factorio 2.0. The mod implements deterministic skills (basic loops) + primitive actions; an external bridge runs a small LLM router that picks skills/params and returns them via RCON.",
+  "description": "Fork of AI Player v3 for Factorio 2.1. /ai-play starts an AI that goes from an empty inventory to burner mining, steam power and assembler-made red science, at player-like speed.",
   "homepage": ""
 }

@@ -1,0 +1,123 @@
+{
+ "active": true,
+ "phase": "running red science",
+ "waiting": "progress: steady",
+ "last_rule": "collect",
+ "game_minutes": 21.107777777777777,
+ "drills": {
+  "iron-ore": 6,
+  "coal": 4,
+  "copper-ore": 3,
+  "stone": 1
+ },
+ "furnaces": 10,
+ "chests": 5,
+ "power": true,
+ "block_parts": 11,
+ "block_done": true,
+ "red_science_from_assembler": 20,
+ "researched": {
+  "electronics": true,
+  "steam-power": true,
+  "automation-science-pack": true,
+  "automation": true
+ },
+ "researched_after_block": [
+  "gun-turret"
+ ],
+ "current_research": "lamp",
+ "stats": {
+  "actions": 568,
+  "placed": 45,
+  "mined": 313,
+  "crafted": 81,
+  "walked": 4945.2950288921675,
+  "errors": 0
+ },
+ "phases": [
+  {
+   "phase": "burner mining 1/12",
+   "tick": 35
+  },
+  {
+   "phase": "burner mining 2/12",
+   "tick": 9331
+  },
+  {
+   "phase": "burner mining 3/12",
+   "tick": 15099
+  },
+  {
+   "phase": "burner mining 4/12",
+   "tick": 16380
+  },
+  {
+   "phase": "burner mining 5/12",
+   "tick": 19495
+  },
+  {
+   "phase": "burner mining 6/12",
+   "tick": 20419
+  },
+  {
+   "phase": "burner mining 7/12",
+   "tick": 22981
+  },
+  {
+   "phase": "burner mining 8/12",
+   "tick": 30478
+  },
+  {
+   "phase": "burner mining 9/12",
+   "tick": 33614
+  },
+  {
+   "phase": "burner mining 10/12",
+   "tick": 34251
+  },
+  {
+   "phase": "burner mining 11/12",
+   "tick": 40264
+  },
+  {
+   "phase": "burner mining 12/12",
+   "tick": 47075
+  },
+  {
+   "phase": "steam power",
+   "tick": 47649
+  },
+  {
+   "phase": "lab",
+   "tick": 51807
+  },
+  {
+   "phase": "science site",
+   "tick": 53165
+  },
+  {
+   "phase": "power line",
+   "tick": 53179
+  },
+  {
+   "phase": "lab",
+   "tick": 53816
+  },
+  {
+   "phase": "automation research",
+   "tick": 53935
+  },
+  {
+   "phase": "science block",
+   "tick": 61439
+  },
+  {
+   "phase": "running red science",
+   "tick": 63826
+  }
+ ],
+ "shortcuts": [
+  "teleport (waits walking time)",
+  "batch mining (waits mining time)"
+ ]
+}

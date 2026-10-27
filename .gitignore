@@ -27,3 +27,4 @@ dist/
 
 # Local dev dedicated-server write dir (saves, config, logs)
 server/
+__pycache__/

@@ -17,3 +17,7 @@ Files:
 
 Note: the first Lua command on a save only triggers Factorio's "achievements will be disabled"
 warning; it must be sent twice. The smoke test does this.
+- `scenario_m1.py <design dir>`  M1: the AI finds a site, places an optimizer blueprint as ghosts with
+  shift-click rules, clears trees, builds it; the harness adds research, the items and a power source,
+  then measures science output against the plan and saves `checkpoints/m1_red_green.zip`.
+- `fai.py`  shared helpers (map creation, server context manager, Lua over RCON).

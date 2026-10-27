@@ -10,6 +10,7 @@ require("scripts.primitives")
 require("scripts.queries")
 require("scripts.brain")
 require("scripts.skills")
+local AISites = require("scripts.sites")
 
 -- -------------------------------------------------------------------------
 -- Remote interface — lets an external MCP/RCON client invoke a skill against
@@ -104,74 +105,26 @@ remote.add_interface("ai_player", {
     return { messages = out, latest_tick = latest }
   end,
 
-  -- Import a Factorio blueprint string as entity ghosts at {x,y} on nauvis.
-  -- Uses an item-on-ground blueprint stack (no player cursor needed). Ghosts
-  -- are placed via build_blueprint(force_build=true) so placement restrictions
-  -- are ignored; they are NOT revived — the build_ghosts skill constructs them
-  -- from inventory afterwards. force defaults to the AI's force.
-  -- Returns { ok, errors, ghost_count } or { ok=false, detail=... }.
+  -- Import a Factorio blueprint string as entity ghosts at {x,y} on nauvis,
+  -- with the same rules as a player's shift-click (build_mode forced): nothing
+  -- goes over buildings, water or cliffs, trees and rocks in the way are marked
+  -- for deconstruction. The old fallback that created ghosts with
+  -- create_entity (no placement checks) is gone. Ghosts are NOT revived here;
+  -- the build_ghosts skill builds them from inventory afterwards.
+  -- Returns { ok, ghosts, expected, marked_for_deconstruction, detail }.
   import_blueprint = function(params)
-    local s = game.surfaces["nauvis"]
-    if not s then return { ok = false, detail = "no nauvis surface" } end
-    local p = params or {}
-    local bp = p.blueprint
-    local x = tonumber(p.x) or 0
-    local y = tonumber(p.y) or 0
-    if type(bp) ~= "string" or bp == "" then
-      return { ok = false, detail = "blueprint string required" }
-    end
-    local fname = p.force or (storage.ai_player and storage.ai_player.force_name) or "player"
-    local f = game.forces[fname]
-    if not f then return { ok = false, detail = "force '" .. fname .. "' not found" } end
-    local e = s.create_entity{ name = "item-on-ground", position = { x = x, y = y }, stack = "blueprint" }
-    if not e or not e.valid then
-      return { ok = false, detail = "could not create blueprint item-on-ground" }
-    end
-    local err = e.stack.import_stack(bp)
-    local is_bp = e.stack.is_blueprint
-    if not is_bp then
-      e.destroy()
-      return { ok = false, detail = "string is a blueprint book, not a single blueprint (import_err=" .. tostring(err) .. ")" }
-    end
-    -- Attempt 1: build_blueprint (Factorio 1.x API — may be broken/changed in 2.0)
-    local gs = e.stack.build_blueprint{
-      surface = s, force = f,
-      position = { x = x, y = y },
-      force_build = true,
-    }
-    -- Count ghosts via pairs (in case # doesn't work on the return type in 2.0)
-    local ghost_count = 0
-    for _ in pairs(gs or {}) do ghost_count = ghost_count + 1 end
-    -- Attempt 2: if build_blueprint returned nothing, fall back to manual
-    -- entity-ghost creation from the parsed blueprint entity table.
-    -- In Factorio 2.0 LuaItemStack.build_blueprint may have changed; this
-    -- fallback uses create_entity{name="entity-ghost"} directly.
-    local fallback_used = false
-    if ghost_count == 0 then
-      local ents = e.stack.get_blueprint_entities and e.stack:get_blueprint_entities() or nil
-      if ents then
-        for _, be in ipairs(ents) do
-          -- Blueprint entity positions are relative to the blueprint origin;
-          -- add (x,y) offset. create_entity needs the center position.
-          local gx = x + (be.position and be.position.x or 0)
-          local gy = y + (be.position and be.position.y or 0)
-          local ghost = s.create_entity{
-            name = "entity-ghost",
-            position = { x = gx, y = gy },
-            force = f,
-            inner_name = be.name,
-            direction = be.direction,
-            raises_built = false,
-          }
-          if ghost and ghost.valid then ghost_count = ghost_count + 1 end
-        end
-        fallback_used = true
-      end
-    end
-    e.destroy()
-    return { ok = true, errors = err or 0, ghost_count = ghost_count,
-             import_err = tostring(err), is_blueprint = tostring(is_bp),
-             fallback = fallback_used }
+    return AISites.place_blueprint(params)
+  end,
+
+  -- Nearest free site for a blueprint (no buildings, cliffs, ore or water).
+  -- params: { blueprint, near={x,y}?, margin?, max_radius?, step? }
+  find_site = function(params)
+    return AISites.find_site(params)
+  end,
+
+  -- Items needed to build a blueprint: { ok, items = { [name] = count } }.
+  blueprint_cost = function(params)
+    return AISites.blueprint_cost(params)
   end,
 
   -- Export all entities in a rectangle (x1,y1)-(x2,y2) on nauvis to a blueprint

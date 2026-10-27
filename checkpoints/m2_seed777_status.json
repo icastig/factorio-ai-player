@@ -2,8 +2,8 @@
  "active": true,
  "phase": "running red science",
  "waiting": "progress: steady",
- "last_rule": "collect",
- "game_minutes": 36.964166666666664,
+ "last_rule": "feed",
+ "game_minutes": 37.02611111111111,
  "drills": {
   "iron-ore": 6,
   "coal": 4,
@@ -28,11 +28,11 @@
  ],
  "current_research": "military",
  "stats": {
-  "actions": 755,
+  "actions": 752,
   "placed": 45,
   "mined": 207,
   "crafted": 88,
-  "walked": 13403.479534076887,
+  "walked": 13506.362262295743,
   "errors": 0
  },
  "phases": [
@@ -102,23 +102,24 @@
   },
   {
    "phase": "lab",
-   "tick": 96124
+   "tick": 96110
   },
   {
    "phase": "automation research",
-   "tick": 96145
+   "tick": 96215
   },
   {
    "phase": "science block",
-   "tick": 106708
+   "tick": 106785
   },
   {
    "phase": "running red science",
-   "tick": 116942
+   "tick": 116984
   }
  ],
  "shortcuts": [
   "teleport (waits walking time)",
   "batch mining (waits mining time)"
- ]
+ ],
+ "start_items": 0
 }

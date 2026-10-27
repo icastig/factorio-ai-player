@@ -47,9 +47,9 @@ def main() -> int:
     with Server(save, FAI / f"m2_{args.seed}_server.log") as srv:
         start = srv.remote("play_start", "{fresh=true}")
         check("play loop started", bool(start.get("ok")), str(start))
-        empty = srv.lua("local c = storage and nil; for _, e in pairs(game.surfaces.nauvis.find_entities_filtered{name='character'}) do "
-                        "if not e.player then c = e end end; rcon.print(c and c.get_main_inventory().get_item_count() or -1)")
-        check("AI starts with an empty inventory", empty == "0", f"{empty} items")
+        first = srv.remote("play_status")
+        check("AI starts with an empty inventory", first.get("start_items") == 0,
+              f"{first.get('start_items')} items when the loop started")
         srv.lua(f"game.speed = {args.speed}")
 
         t_real0 = time.time()

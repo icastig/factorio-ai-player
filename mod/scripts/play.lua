@@ -1122,6 +1122,7 @@ local function status()
     current_research = force.current_research and force.current_research.name or nil,
     stats = p.stats, phases = p.phase_log,
     shortcuts = {"teleport (waits walking time)", "batch mining (waits mining time)"},
+    start_items = p.start_items,
   }
 end
 
@@ -1164,6 +1165,7 @@ function AIPlay.start(character, opts)
     hand_furnaces = {}, chain = {}, block = {}, block_parts = {}, research_done = {}, trace = {}, craft_seen = {}, bad_sites = {},
     stats = {actions = 0, placed = 0, mined = 0, crafted = 0, walked = 0, errors = 0},
   }
+  storage.ai_player.play.start_items = character.get_item_count()
   pcall(helpers.remove_path, "ai-player/play-log.txt")
   log(string.format("play loop started at %.0f,%.0f%s", character.position.x, character.position.y,
     o.fresh and " with an empty inventory" or ""), true)

@@ -3,7 +3,7 @@
  "phase": "running red science",
  "waiting": "progress: steady",
  "last_rule": "fuel",
- "game_minutes": 37.0075,
+ "game_minutes": 36.96527777777778,
  "drills": {
   "iron-ore": 6,
   "coal": 4,
@@ -15,7 +15,7 @@
  "power": true,
  "block_parts": 11,
  "block_done": true,
- "red_science_from_assembler": 16,
+ "red_science_from_assembler": 21,
  "researched": {
   "electronics": true,
   "steam-power": true,
@@ -27,11 +27,11 @@
  ],
  "current_research": "lamp",
  "stats": {
-  "actions": 580,
+  "actions": 575,
   "placed": 45,
   "mined": 259,
   "crafted": 85,
-  "walked": 14164.145949230648,
+  "walked": 14167.291968516032,
   "errors": 0
  },
  "phases": [
@@ -105,15 +105,15 @@
   },
   {
    "phase": "automation research",
-   "tick": 103453
+   "tick": 103495
   },
   {
    "phase": "science block",
-   "tick": 113281
+   "tick": 113260
   },
   {
    "phase": "running red science",
-   "tick": 125342
+   "tick": 120778
   }
  ],
  "shortcuts": [

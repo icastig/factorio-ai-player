@@ -1,3 +1,23 @@
+# Factorio AI player (fork of AI Player v3)
+
+This is Lowe's private fork of [thedemon117/ai-player-v3](https://github.com/thedemon117/ai-player-v3)
+(MIT according to its [mod portal page](https://mods.factorio.com/mod/ai-player-v3)). Goal: an AI that starts
+alone on a fresh Space Age map and launches the first rocket. The plan with milestones M0 to M9 is in the
+project plan doc: https://claude.ai/artifact/Mxj1TpWjng5PtY5JBYXJpe
+
+What this fork adds so far:
+
+- Ported to Factorio 2.1 (tested on 2.1.21 headless, the version Lowe's own game is pinned to).
+- `mod/scripts/sites.lua`: site finder, blueprint placement with shift-click rules, blueprint cost.
+- `harness/`: headless test harness without an LLM. `smoke_m0.py` (M0) and `scenario_m1.py` (M1) both pass.
+- `designs/`: blocks designed by [factorio_optimizer_v2](https://github.com/SeezoCode/factorio_optimizer_v2),
+  pinned to commit `022c3126d90abeb86a5844a9c93e5b5fa470f90c` (GPL-3.0, used as a separate program).
+- `jobs/`: optimizer job files. `checkpoints/`: saves at the end of each milestone (open in Factorio 2.1.21).
+
+The original README follows.
+
+---
+
 # AI Player v3
 
 A Factorio 2.0 mod that spawns an autonomous AI character in your game. The AI perceives the factory, decides what to do, and acts — building, mining, smelting, researching, and responding to chat — all driven by an LLM of your choice.

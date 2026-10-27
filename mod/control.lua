@@ -17,7 +17,7 @@ require("scripts.skills")
 -- the SAME dispatch path the bridge uses (AISkills.run -> REGISTRY). Registered
 -- in the main chunk so it exists on every load (Factorio requires interfaces to
 -- be added identically each load). Call over RCON:
---   /sc rcon.print(game.table_to_json(
+--   /sc rcon.print(helpers.table_to_json(
 --     remote.call("ai_player", "run_skill", "gather", {item="coal", count=50})))
 -- -------------------------------------------------------------------------
 remote.add_interface("ai_player", {

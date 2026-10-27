@@ -4,7 +4,7 @@ Runs the forked AI Player mod on a Factorio 2.1 headless server, without an LLM.
 
 Layout expected on the machine (see the project plan, M0):
 
-    ~/fai/factorio/          headless server 2.1.x, mods/ai-player-v3 -> ../../ai-player/mod
+    ~/fai/factorio/          headless server 2.1.21 (pinned to match the Mac game, so checkpoint saves open there), mods/ai-player-v3 -> ../../ai-player/mod
     ~/fai/ai-player/         this repo
     ~/fai/map-gen.json       -> harness/config/map-gen.json (enemies off, seed 12345)
     ~/fai/server-settings.json -> harness/config/server-settings.json (auto_pause off, not public)
